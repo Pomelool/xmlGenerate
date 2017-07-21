@@ -1,0 +1,25 @@
+<div [mdl-shadow]=6 id="tokens">
+  <mdl-chip mdl-label="{{item.name}}" draggable *ngFor="let item of listVars" [dragData]="item" >
+    <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">{{item.name[0]}}</span>
+  </mdl-chip>
+</div>
+
+<div [mdl-shadow]=6 droppable (onDrop)="onItemDropListAdded($event)" id="added">
+  <h4>Drag variable here to configure XML</h4>
+  <div *ngFor="let item of listAdded; index as i;"
+       droppable
+       (onDrop)="onItemDropOnObj($event, item)"
+       [style.padding-left]= "getPadd(i)"
+       >
+
+    <mdl-chip mdl-label="{{item.name}}"
+              mdl-action-icon="cancel"
+              (action-click)="deleteChipFromAdded(item)"
+              mdl-ripple
+              >
+      <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">{{item.name[0]}}</span>
+    </mdl-chip>
+
+  </div>
+
+</div>
