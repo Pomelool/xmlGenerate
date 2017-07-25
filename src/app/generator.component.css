@@ -1,0 +1,70 @@
+
+/* Draggable*/
+
+.drag-border {
+    border: #ff525b dashed 2px;
+}
+
+.drag-handle {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+/* Droppable */
+
+.drag-hint-border {
+    border: #3c763d dashed 2px;
+}
+
+.drag-over-border {
+    border: #fbbc05 dashed 2px;
+}
+
+.chips:hover{
+    cursor: pointer;
+}
+
+.custom-dialog button{
+  color:blue;
+}
+
+.boxes{
+  width: 500px;
+  float: left;
+  margin: 20px;
+  height: 700px;
+  overflow: scroll;
+  padding-top: 0;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.codeArea{
+  overflow: scroll;
+}
+
+.relative{
+  position:relative;
+}
+.detailChip{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height:250px;
+  width: 200px;
+  background: black;
+  color:white;
+  border-radius: 3px;
+  padding: 7px;
+  opacity: 0.5;
+  display: none;
+  transition: ease-out;
+}

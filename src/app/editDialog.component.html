@@ -1,0 +1,11 @@
+<h4 class="mdl-dialog__title">Manage Values in <{{item.name}}></h4>
+<div class="editDialog-content mdl-dialog__content">
+  <form [formGroup]="form" id="dialogForm">
+    <mdl-textfield type="text" class="editDialogTextEdit" *ngFor="let control of controlNames; index as i;"  label="{{labelsName[i]}}" formControlName="{{control}}" floating-label></mdl-textfield>
+  </form>
+</div>
+<div class="mdl-dialog__actions">
+  <button type="button" class="blackText" mdl-button (click)="saveEdit()" [disabled]="!form.valid" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
+  <button type="button" class="blackText" id="newValueBtn" mdl-button (click)="newValue()"  mdl-button-type="raised"  mdl-ripple>New</button>
+  <button type="button" class="blackText" mdl-button (click)="onEsc()"  mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Close</button>
+</div>

@@ -1,0 +1,40 @@
+<div [mdl-shadow]=6 class="boxes">
+  <mdl-chip mdl-label="{{item.name}}" draggable *ngFor="let item of variableList" [dragData]="item" >
+    <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">{{item.name[0]}}</span>
+  </mdl-chip>
+</div>
+
+<div [mdl-shadow]=6 droppable (onDrop)="onItemDropListAdded($event)" class="boxes relative" >
+  <h4>Drag variable here to configure XML</h4>
+  <div *ngFor="let item of addedList; index as i;"
+       droppable
+       (onDrop)="onItemDropOnObj($event, item)"
+       [style.padding-left]="item.indent*50 + 'px'"
+       >
+
+    <mdl-chip mdl-label="{{item.name}}"
+              mdl-action-icon="cancel"
+              (click)="editChip(item)"
+              (action-click)="deleteChipFromAdded(item)"
+              mdl-ripple
+              class="chips"
+              on-mouseover='showDetailChip(item)'
+              on-mouseout='hideDetailChip(item)'
+              [style.border-bottom] = "item.giveColor()"
+              >
+      <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">{{item.name[0]}}</span>
+    </mdl-chip>
+  </div>
+  <div class="detailChip" [style.display] = "flagShowDetailChip" #detailChip>
+    <p style="margin-bottom:0">Value List of <{{chipDetail.name}}></p>
+    <hr>
+    <p style="margin-bottom:0" *ngFor="let value of chipDetailTags; index as i;">{{chipDetailTags[i]}} = {{chipDetailContent[i]}}</p>
+  </div>
+</div>
+
+<div [mdl-shadow]=6 droppable (onDrop)="onItemDropListAdded($event)" class="boxes">
+  <h4>Generated XML</h4>
+  <textarea class="codeArea" rows="15" cols="50">{{xml}}</textarea>
+  <h4>Generated Json</h4>
+  <textarea class="codeArea" rows="15" cols="50">{{jsonOutput}}</textarea>
+</div>
