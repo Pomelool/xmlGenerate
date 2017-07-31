@@ -16,3 +16,27 @@
 .blackText{
   color: black !important;
 }
+
+#newVarBox{
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  height: 60%;
+  width: 70%;
+  border: 2px solid lightgreen;
+  border-radius: 5px;
+  background-color: white;
+  padding-left: 35px;
+  padding-right: 15px;
+}
+
+.float-right-bottom{
+  position: absolute;
+  right:0;
+  bottom:0;
+}
+
+.relative{
+  position: relative;
+  height: 85%;
+}

@@ -1,11 +1,34 @@
-<h4 class="mdl-dialog__title">Manage Values in <{{item.name}}></h4>
+<h4 class="mdl-dialog__title">Manage Values in
+  <{{item.name}}>
+</h4>
 <div class="editDialog-content mdl-dialog__content">
   <form [formGroup]="form" id="dialogForm">
-    <mdl-textfield type="text" class="editDialogTextEdit" *ngFor="let control of controlNames; index as i;"  label="{{labelsName[i]}}" formControlName="{{control}}" floating-label></mdl-textfield>
+    <mdl-textfield type="text" class="editDialogTextEdit" *ngFor="let control of controlNames; index as i;" label="{{labelsName[i]}}"
+      formControlName="{{control}}" floating-label></mdl-textfield>
   </form>
 </div>
+
+<div mdl-shadow="8" class="animated bounceInRight" id="newVarBox" [style.display]="newVarBox">
+  <div class="relative">
+    <h4>Add A New Variable Name</h4>
+    <div [formGroup]="newVarForm">
+      <mdl-textfield type="text" label="Variable Name" formControlName="varValue" floating-label></mdl-textfield><br>
+      <mdl-select formControlName="isRequired" label="Is this Required?" floating-label>
+        <mdl-option *ngFor="let b of choices" [value]="b.value">{{b.name}}</mdl-option>
+      </mdl-select>
+    </div>
+    
+    <div class="float-right-bottom">
+      <button type="button" class="blackText" mdl-button (click)="saveNewValue()" [disabled]="!newVarForm.valid" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
+      <button type="button" class="blackText" mdl-button (click)="cancelNewValue()" mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Close</button>
+    </div>
+  </div>
+</div>
+
+
 <div class="mdl-dialog__actions">
-  <button type="button" class="blackText" mdl-button (click)="saveEdit()" [disabled]="!form.valid" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
-  <button type="button" class="blackText" id="newValueBtn" mdl-button (click)="newValue()"  mdl-button-type="raised"  mdl-ripple>New</button>
-  <button type="button" class="blackText" mdl-button (click)="onEsc()"  mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Close</button>
+  <button type="button" class="blackText" mdl-button (click)="saveEdit()" [disabled]="!form.valid" mdl-button-type="raised"
+    mdl-colored="primary" mdl-ripple>Save</button>
+  <button type="button" class="blackText" id="newValueBtn" mdl-button (click)="newValue()" mdl-button-type="raised" mdl-ripple>New</button>
+  <button type="button" class="blackText" mdl-button (click)="onEsc()" mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Close</button>
 </div>

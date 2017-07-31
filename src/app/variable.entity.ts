@@ -8,10 +8,15 @@ export class VariableEntity {
   required: string[];
   values: any;
 
-  constructor(id: number, name: string, req?: string[], values?: any) {
+  constructor(id: number, name: string, req?: string[], values?: any, children?:VariableEntity[]) {
     this.name = name;
     this.id = id;
-    this.children = [];
+    if(children != null){
+      this.children = children;
+    }
+    else{
+      this.children = [];
+    }
     this.indent = -1;
     this.parent = null;
     if (req != null) {
@@ -91,6 +96,15 @@ export class VariableEntity {
       }
     }
     return false;
+  }
+
+  setAIndent(ind:number){
+    this.indent = ind;
+    if(!(this.children.length == 0)){
+      for(let child of this.children){
+      child.setAIndent(ind + 1);
+      }
+    } 
   }
 
 

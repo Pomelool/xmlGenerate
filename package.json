@@ -13,6 +13,8 @@
   "private": true,
   "dependencies": {
     "@angular-mdl/core": "^4.0.8",
+    "@angular-mdl/popover": "^0.6.4",
+    "@angular-mdl/select": "^0.10.5",
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -22,9 +24,13 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@angular2-mdl-ext/popover": "^0.6.0",
+    "@angular2-mdl-ext/select": "^0.10.3",
     "core-js": "^2.4.1",
     "ng2-drag-drop": "^2.5.0",
     "rxjs": "^5.1.0",
+    "xml2js": "^0.4.17",
+    "xml2js-parser": "^1.1.1",
     "xmlbuilder": "^9.0.1",
     "zone.js": "^0.8.4"
   },

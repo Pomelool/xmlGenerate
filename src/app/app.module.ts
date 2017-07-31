@@ -7,6 +7,7 @@ import { GeneratorComponent } from './generator.component';
 import { EditDialogComponent } from "./editDialog.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditDialogService } from './editDialog.service';
+import { MdlSelectModule } from '@angular-mdl/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { EditDialogService } from './editDialog.service';
     MdlModule,
     BrowserModule,
     ReactiveFormsModule,
+    MdlSelectModule,
     Ng2DragDropModule.forRoot()
   ],
   providers: [EditDialogService],

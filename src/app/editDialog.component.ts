@@ -7,7 +7,7 @@ import { EditDialogService } from './editDialog.service';
 @Component({
   selector: 'editDialog',
   templateUrl: 'editDialog.component.html',
-  styleUrls: ['editDialog.component.css']
+  styleUrls: ['editDialog.component.css', 'animated.css']
 })
 export class EditDialogComponent implements OnInit {
   item: any;
@@ -17,6 +17,10 @@ export class EditDialogComponent implements OnInit {
   controlNames: string[] = [];
   edService: any;
   labelsName: string[] = [];
+  newVarBox = 'none';
+  newVarForm: FormGroup;
+  newVarObj = {'name':"", 'required':false};
+  choices = [{value:true,name:"Required"}, {value:false, name:"Optional"}];
 
   constructor(
     private dialog: MdlDialogReference,
@@ -42,9 +46,13 @@ export class EditDialogComponent implements OnInit {
     }
     //console.log(this.controls);
     this.form = this.fb.group(this.controls);
-
     this.form.valueChanges.subscribe(data => {
       this.values = data;
+    });
+
+    this.newVarForm = this.fb.group({
+      varValue: new FormControl("", Validators.required),
+      isRequired: new FormControl(this.choices, Validators.required)
     });
   }
 
@@ -55,11 +63,48 @@ export class EditDialogComponent implements OnInit {
   }
 
   newValue(){
-    alert("This function is not yet implemented!")
+    this.newVarBox = "block";
+    this.newVarForm.controls["isRequired"].setValue(false);
+    this.newVarForm.valueChanges.subscribe(data => {
+      this.newVarObj.name = data.varValue;
+      this.newVarObj.required = data.isRequired;
+    });
   }
 
-  @HostListener('keydown.esc')
-  public onEsc(): void {
+  saveNewValue(){
+    this.item.values[this.newVarObj.name] = "";
+    if(this.newVarObj.required){
+      this.item.required.push(this.newVarObj.name);
+    }
+    this.edService.update();
+    this.reloadEdit();
+    this.newVarForm.controls["varValue"].setValue("");
+    this.newVarBox = "none";
+  }
+
+  cancelNewValue(){
+    this.newVarBox = "none";
+  }
+  
+  reloadEdit(){
+    this.values = this.item.values;
+    for(let label in this.values){
+      this.controlNames.push(label);
+      this.controls[label] = new FormControl(this.values[label]);
+      if(this.item.required.indexOf(label) > -1){
+        this.labelsName.push(label + "*")
+      }
+      else{
+        this.labelsName.push(label);
+      }
+    }
+    this.form = this.fb.group(this.controls);
+    this.form.valueChanges.subscribe(data => {
+      this.values = data;
+    });
+  }
+
+  onEsc(): void {
     this.dialog.hide();
   }
 

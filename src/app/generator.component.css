@@ -36,6 +36,9 @@
   color:blue;
 }
 
+.wrapper{
+    overflow: hidden !important;
+}
 .boxes{
   width: 500px;
   float: left;
@@ -68,3 +71,17 @@
   display: none;
   transition: ease-out;
 }
+
+#controlPanel{
+    overflow: show;
+    position: absolute;
+    height: 185px;
+    top:520px;
+    width: 500px;
+}
+
+#chipSpace{
+    height: 500px;
+    overflow:scroll !important;
+}
+
