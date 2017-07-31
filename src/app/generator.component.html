@@ -1,10 +1,28 @@
 <div class="wrapper boxes relative">
-  <div [mdl-shadow]=6 id="chipSpace" class="relative">
-    <mdl-chip mdl-label="{{item.name}}" draggable *ngFor="let item of variableList" [dragData]="item">
+  <div mdl-shadow=6 id="chipSpace" class="relative">
+    <mdl-chip mdl-label="{{item.name}}" draggable mdl-action-icon="cancel" (action-click)="deleteChipFromList(item)" *ngFor="let item of variableList" [dragData]="item">
       <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">{{item.name[0]}}</span>
     </mdl-chip>
+
+    <div class="arrow_box animated zoomInUp" mdl-shadow=6 [style.display]="displayToggleNewChip">
+      <h5 id="addChipTitle">Add New Chip</h5>
+      <div id="addChipForm" [formGroup]="newChipForm">
+        <mdl-textfield type="text" label="Chip Name" placeholder="Enter Name Heres" formControlName="newChipValue" floating-label></mdl-textfield>
+      </div>
+      <button type="button" mdl-button (click)="saveNewChip()" [disabled]="!newChipForm.valid" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
+      <button type="button" class="blackText" mdl-button (click)="cancelNewChip()" mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Close</button>
+    </div>
+
+    <button [mdl-tooltip-large]="addtt1s" id="addchipbtn" mdl-button mdl-button-type="fab" (click)="addChoice()" mdl-colored="primary" mdl-shadow=6 mdl-ripple>
+      <mdl-icon>add</mdl-icon>
+    </button>
+    <mdl-tooltip #addtt1s="mdlTooltip">
+      Click to Add new Chip
+    </mdl-tooltip>
   </div>
-  <div [mdl-shadow]=6  id="controlPanel">
+
+  
+  <div mdl-shadow=6  id="controlPanel">
     <p>Upload your xml file here</p>
     <input #xmlInput type='file' accept='text/xml' (change)='openFile($event)'>
     <button (click)="xmlInput.value = ''">Reset</button>
@@ -13,12 +31,12 @@
 </div>
 
 
-<div [mdl-shadow]=6 droppable (onDrop)="onItemDropListAdded($event)" class="boxes relative">
+<div mdl-shadow=6 droppable (onDrop)="onItemDropListAdded($event)" id="dragtoZone" class="boxes relative">
   <h4>Drag variable here to configure XML</h4>
   <div *ngFor="let item of addedList; index as i;" droppable (onDrop)="onItemDropOnObj($event, item)" [style.padding-left]="item.indent*50 + 'px'">
 
     <mdl-chip mdl-label="{{item.name}}" mdl-action-icon="cancel" (click)="editChip(item)" (action-click)="deleteChipFromAdded(item)"
-      mdl-ripple class="chips" on-mouseover='showDetailChip(item)' on-mouseout='hideDetailChip()' [style.border-bottom]="item.giveColor()">
+      mdl-ripple class="chips animated slideInLeft" on-mouseover='showDetailChip(item)' on-mouseout='hideDetailChip()' [style.border-bottom]="item.giveColor()">
       <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">{{item.name[0]}}</span>
     </mdl-chip>
   </div>
@@ -31,7 +49,7 @@
   </div>
 </div>
 
-<div [mdl-shadow]=6 droppable (onDrop)="onItemDropListAdded($event)" class="boxes">
+<div mdl-shadow=6 id="displayzone" class="relative boxes">
   <h4>Generated XML</h4>
   <textarea class="codeArea" rows="15" cols="50">{{xml}}</textarea>
   <h4>Generated Json</h4>

@@ -15,12 +15,13 @@ import {
 import {
   EditDialogService
 } from './editDialog.service';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 @Component({
   selector: 'generator',
   templateUrl: './generator.component.html',
-  styleUrls: ['./generator.component.css']
+  styleUrls: ['./generator.component.css', 'animated.css']
 })
 export class GeneratorComponent {
   builder = require('xmlbuilder');
@@ -41,6 +42,10 @@ export class GeneratorComponent {
   chipDetail: VariableEntity = new VariableEntity(0, "empty");
   chipDetailTags: string[] = [];
   chipDetailContent: string[] = [];
+
+  newChipForm: FormGroup;
+  newChipValues: object;
+  displayToggleNewChip:string = "none";
   //extract data here
   //variableNames = ["Apple", "Carrot", "Orange", "Banana", "Grape"];
   objs = [{
@@ -69,7 +74,7 @@ export class GeneratorComponent {
     }
   }
   ];
-  constructor(private dialogService: MdlDialogService, edService: EditDialogService) {
+  constructor(private dialogService: MdlDialogService,private fb: FormBuilder, edService: EditDialogService) {
     this.edService = edService;
   }
   ngOnInit() {
@@ -77,8 +82,33 @@ export class GeneratorComponent {
     for (let objectExample of this.objs) {
       this.variableList.push(new VariableEntity(this.generateId(), objectExample.name, objectExample.requiredVars, objectExample.values));
     }
+    this.newChipForm = this.fb.group({
+      newChipValue: new FormControl("", Validators.required)
+    });
+    this.newChipForm.valueChanges.subscribe(data => {
+      this.newChipValues = data;
+    });
   }
   //EOF - ngOnInit()
+
+  addChoice() {
+    this.displayToggleNewChip = "block";
+  }
+
+  saveNewChip(){
+    var name = this.newChipValues['newChipValue'];
+    this.variableList.push(new VariableEntity(this.generateId(), name));
+    this.newChipForm.controls['newChipValue'].setValue("");
+    this.displayToggleNewChip = "none";
+  }
+
+  cancelNewChip(){
+    this.displayToggleNewChip = "none";
+  }
+
+  deleteChipFromList(tar){
+    this.variableList.splice(this.variableList.indexOf(tar), 1);
+  }
 
   generateId() {
     this.currentId += 1;
