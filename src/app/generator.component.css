@@ -60,7 +60,8 @@
 }
 
 .codeArea{
-  overflow: scroll;
+  width: 470px;
+  margin-top: 20px;
 }
 
 .relative{

@@ -5,9 +5,10 @@ import { MdlModule } from '@angular-mdl/core';
 import { AppComponent } from './app.component';
 import { GeneratorComponent } from './generator.component';
 import { EditDialogComponent } from "./editDialog.component";
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditDialogService } from './editDialog.service';
 import { MdlSelectModule } from '@angular-mdl/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { MdlSelectModule } from '@angular-mdl/select';
     EditDialogComponent
   ],
   imports: [
+    FormsModule,
     MdlModule,
     BrowserModule,
     ReactiveFormsModule,

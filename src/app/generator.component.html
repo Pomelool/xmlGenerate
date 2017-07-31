@@ -50,8 +50,7 @@
 </div>
 
 <div mdl-shadow=6 id="displayzone" class="relative boxes">
-  <h4>Generated XML</h4>
-  <textarea class="codeArea" rows="15" cols="50">{{xml}}</textarea>
-  <h4>Generated Json</h4>
-  <textarea class="codeArea" rows="15" cols="50">{{jsonOutput}}</textarea>
+  <mdl-textfield class="codeArea" label="XML Zone" [(ngModel)]="xml" rows="14" placeholder="Waiting for input" floating-label></mdl-textfield><br>
+  <button type="button" id="generateFromXmlBtn" mdl-button (click)="generateFromTextArea()"  mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Generate From XML</button>
+  <mdl-textfield class="codeArea" label="Json Zone" [(ngModel)]="jsonOutput" rows="14" placeholder="Waiting for input" floating-label></mdl-textfield><br>
 </div>

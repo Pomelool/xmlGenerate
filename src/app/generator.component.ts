@@ -258,4 +258,16 @@ export class GeneratorComponent {
       this.inputObj = res['root'];
     }
   }
+
+  generateFromTextArea(){
+    var xmlInput = '<root>' + this.xml + '</root>';
+    var res;
+    this.parseString(xmlInput, function (err, result) {
+        res = result;
+      });
+    this.inputObj = res['root'];
+    this.root = this.objectify(this.inputObj, 'root');
+    this.root.setAIndent(-1);
+    this.reloadList();
+  }
 }
