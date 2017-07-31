@@ -8,10 +8,14 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.2.1",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/language-service": "^4.0.0",
     "@angular-mdl/core": "^4.0.8",
     "@angular-mdl/popover": "^0.6.4",
     "@angular-mdl/select": "^0.10.5",
@@ -32,7 +36,8 @@
     "xml2js": "^0.4.17",
     "xml2js-parser": "^1.1.1",
     "xmlbuilder": "^9.0.1",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "@types/node": "^6.0.84"
   },
   "devDependencies": {
     "@angular/cli": "1.2.1",
