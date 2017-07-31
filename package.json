@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "preinstall": "npm install -g http-server",
     "postinstall": "ng build --aot -prod"
   },
   "private": true,
@@ -37,7 +38,8 @@
     "xml2js-parser": "^1.1.1",
     "xmlbuilder": "^9.0.1",
     "zone.js": "^0.8.4",
-    "@types/node": "^6.0.84"
+    "@types/node": "^6.0.84",
+    "typescript": "~2.3.3"
   },
   "devDependencies": {
     "@angular/cli": "1.2.1",
