@@ -4,24 +4,24 @@ import {
 } from '@angular/core';
 import {
   VariableEntity
-} from './variable.entity';
+} from '../variable/variable.entity';
 import {
   MdlDialogService,
   MdlDialogReference
 } from '@angular-mdl/core';
 import {
   EditDialogComponent
-} from './editDialog.component';
+} from '../editDialog/editDialog.component';
 import {
   EditDialogService
-} from './editDialog.service';
+} from '../editDialog/editDialog.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-
+import { ChipComponent } from "../chip/chip.component";
 
 @Component({
   selector: 'generator',
   templateUrl: './generator.component.html',
-  styleUrls: ['./generator.component.css', 'animated.css']
+  styleUrls: ['./generator.component.css', '../animated.css']
 })
 export class GeneratorComponent {
   builder = require('xmlbuilder');
@@ -35,7 +35,6 @@ export class GeneratorComponent {
   variableList = [];
   addedList = [];
   edService: EditDialogService;
-  flagShowDetailChip: string = 'none';
 
   inputObj: any;
 
@@ -97,7 +96,7 @@ export class GeneratorComponent {
 
   saveNewChip(){
     var name = this.newChipValues['newChipValue'];
-    this.variableList.push(new VariableEntity(this.generateId(), name));
+    this.variableList.push(new VariableEntity(this.generateId(), name, [], {}));
     this.newChipForm.controls['newChipValue'].setValue("");
     this.displayToggleNewChip = "none";
   }
@@ -130,7 +129,6 @@ export class GeneratorComponent {
   deleteChipFromAdded(item) {
     item.remove();
     this.reloadList();
-    this.hideDetailChip();
   }
 
   reloadList() {
@@ -149,7 +147,6 @@ export class GeneratorComponent {
       this.jsonOutput = null;
       this.xml = null;
     }
-
   }
 
   jsonify(top) {
@@ -206,20 +203,6 @@ export class GeneratorComponent {
     return noChild;
   }
 
-  showDetailChip(item) {
-    this.flagShowDetailChip = "block";
-    this.chipDetail = item;
-    for (let tag in item.values) {
-      this.chipDetailTags.push(tag);
-      this.chipDetailContent.push(item.values[tag]);
-    }
-  }
-  hideDetailChip() {
-    this.flagShowDetailChip = "none";
-    this.chipDetail = new VariableEntity(0, "empty");
-    this.chipDetailTags = [];
-    this.chipDetailContent = [];
-  }
   editChip(item) {
     let pDialog = this.dialogService.showCustomDialog({
       component: EditDialogComponent,

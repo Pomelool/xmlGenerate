@@ -1,0 +1,181 @@
+/* Draggable*/
+
+.drag-border {
+  outline: #4286f4 dashed;
+}
+
+.drag-handle {
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+
+/* Droppable */
+
+.drag-hint-border {
+  outline: #3c763d dashed !important;
+  margin: 2px;
+}
+
+.drag-over-border {
+  outline: #fbbc05 dashed !important;
+  margin: 2px;
+}
+
+
+/* Other */
+.custom-dialog button {
+  color: blue;
+}
+
+.wrapper {
+  overflow: hidden !important;
+}
+
+.boxes {
+  width: 500px;
+  float: left;
+  margin: 20px;
+  height: 700px;
+  padding-top: 0;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.chipwrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.dropZone{
+  height: 90%;
+  overflow: scroll;
+}
+
+.codeArea {
+  width: 470px;
+  margin-top: 20px;
+}
+
+.relative {
+  position: relative;
+}
+
+#controlPanel {
+  overflow: show;
+  position: absolute;
+  height: 185px;
+  top: 520px;
+  width: 500px;
+}
+
+#chipSpace {
+  height: 500px;
+  padding: 10px;
+}
+
+.flexChipContainer {
+  padding: 10px;
+  overflow-y: scroll !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 80%;
+}
+
+#chipSpace mdl-chip {
+  margin: 5px;
+}
+
+#addchipbtn {
+  position: absolute;
+  bottom: 20px;
+  right: 50px;
+}
+
+.arrow_box {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  bottom: 115px;
+  width: 300px;
+  height: 150px;
+  background: #ffffff;
+  border: 2px solid #8bc34a;
+  animation-duration: 0.6s !important;
+}
+
+.arrow_box:after,
+.arrow_box:before {
+  top: 100%;
+  left: 85%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: #ffffff;
+  border-width: 30px;
+  margin-left: -30px;
+}
+
+.arrow_box:before {
+  border-color: rgba(202, 234, 255, 0);
+  border-top-color: #8bc34a;
+  border-width: 33px;
+  margin-left: -33px;
+}
+
+#addChipTitle {
+  margin: 10px 0 10px 0;
+}
+
+.blackText {
+  color: black !important;
+}
+
+
+
+
+/* dragula */
+
+.gu-mirror {
+  position: fixed!important;
+  margin: 0!important;
+  z-index: 9999!important;
+  opacity: .8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80)
+}
+
+.gu-hide {
+  display: none!important
+}
+
+.gu-unselectable {
+  -webkit-user-select: none!important;
+  -moz-user-select: none!important;
+  -ms-user-select: none!important;
+  user-select: none!important
+}
+
+.gu-transit {
+  opacity: .2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20)
+}

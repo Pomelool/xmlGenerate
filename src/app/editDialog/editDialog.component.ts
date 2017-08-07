@@ -7,7 +7,7 @@ import { EditDialogService } from './editDialog.service';
 @Component({
   selector: 'editDialog',
   templateUrl: 'editDialog.component.html',
-  styleUrls: ['editDialog.component.css', 'animated.css']
+  styleUrls: ['editDialog.component.css', '../animated.css']
 })
 export class EditDialogComponent implements OnInit {
   item: any;

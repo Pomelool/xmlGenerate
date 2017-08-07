@@ -1,0 +1,70 @@
+<div *ngIf="dragToggle;else template" class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': 'pulseToggle === 1'}" draggable
+  [dragData]="obj">
+  <div class="colortag" id="handlebar">
+    <i class="material-icons .drag-handler">&#xE25D;</i>
+  </div>
+  <div class="rightWrapper">
+    <div class="toprightWrapper">
+      <div class="textZone">
+        <span>{{chipText}}</span>
+      </div>
+      <div class="btnZone" [ngClass]="{'expandedHoriChip': expandHoriValue===1}">
+        <div *ngIf="expandHoriValue === 0; else expandedHoriChip">
+          <i class="fa fa-ellipsis-h fa-lg" (click)="changeExpandHoriValue(1)" aria-hidden="true"></i>
+        </div>
+        <ng-template #expandedHoriChip>
+          <div>
+            <i class="fa fa-pencil fa-lg" aria-hidden="true" (click)="editAction()"></i>
+            <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+            <i class="fa fa-expand fa-lg" *ngIf="expandVertValue===0; else compress" (click)="changeExpandVerticalValue(1)" aria-hidden="true"></i>
+            <ng-template #compress>
+              <i class="fa fa-compress fa-lg" aria-hidden="true" (click)="changeExpandVerticalValue(0)"></i>
+            </ng-template>
+            <i class="fa fa-ellipsis-v fa-lg" *ngIf="expandHoriValue === 1" aria-hidden="true" (click)="changeExpandHoriValue(0)"></i>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="expandVertValue === 1" class="valuesZone animated fadeIn">
+      {{values}}
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': 'pulseToggle === 1'}">
+    <div class="colortag" id="handlebar">
+      <i class="material-icons .drag-handler">&#xE25D;</i>
+    </div>
+    <div class="rightWrapper">
+      <div class="toprightWrapper">
+        <div class="textZone">
+          <span>{{chipText}}</span>
+        </div>
+        <div class="btnZone" [ngClass]="{'expandedHoriChip': expandHoriValue===1}">
+          <div *ngIf="expandHoriValue === 0; else expandedHoriChip">
+            <i class="fa fa-ellipsis-h fa-lg" (click)="changeExpandHoriValue(1)" aria-hidden="true"></i>
+          </div>
+          <ng-template #expandedHoriChip>
+            <div>
+              <i class="fa fa-pencil fa-lg" aria-hidden="true" (click)="editAction()"></i>
+              <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+              <i class="fa fa-expand fa-lg" *ngIf="expandVertValue===0; else compress" (click)="changeExpandVerticalValue(1)" aria-hidden="true"></i>
+              <ng-template #compress>
+                <i class="fa fa-compress fa-lg" aria-hidden="true" (click)="changeExpandVerticalValue(0)"></i>
+              </ng-template>
+              <i class="fa fa-ellipsis-v fa-lg" *ngIf="expandHoriValue === 1" aria-hidden="true" (click)="changeExpandHoriValue(0)"></i>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div *ngIf="expandVertValue === 1" class="valuesZone animated fadeIn">
+        {{values}}
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- [ngClass]="{'expandVertChip': expandVertValue === 1}" -->
