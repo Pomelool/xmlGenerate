@@ -59,7 +59,7 @@ export class EditDialogComponent implements OnInit {
   saveEdit(){
     this.item.values = this.values;
     this.dialog.hide();
-    this.edService.update();
+    this.edService.update(this.item);
   }
 
   newValue(){
@@ -76,7 +76,7 @@ export class EditDialogComponent implements OnInit {
     if(this.newVarObj.required){
       this.item.required.push(this.newVarObj.name);
     }
-    this.edService.update();
+    this.edService.update(this.item);
     this.reloadEdit();
     this.newVarForm.controls["varValue"].setValue("");
     this.newVarBox = "none";

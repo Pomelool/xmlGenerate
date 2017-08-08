@@ -2,7 +2,7 @@
   <div mdl-shadow=6 id="chipSpace" class="relative">
     <h4>Variables</h4>
     <div class="flexChipContainer">
-      <xmlChip *ngFor="let item of variableList" (editClick)="editChip($event)"  [dragToggle]=true [obj]=item></xmlChip>
+      <xmlChip *ngFor="let item of variableList" (editClick)="editChip($event)" (deleteClick)="deleteChipFromList($event)" [dragToggle]=true [obj]=item></xmlChip>
     </div>
 
     <div class="arrow_box animated zoomInUp" mdl-shadow=6 [style.display]="displayToggleNewChip">
@@ -39,7 +39,7 @@
   <h4>Drag variable here to configure XML</h4>
   <div class="dropZone" droppable (onDrop)="onItemDropListAdded($event)">
     <div *ngFor="let item of addedList; index as i;" class="chipwrapper" droppable (onDrop)="onItemDropOnObj($event, item)">
-      <xmlChip [obj]=item [dragToggle]=false  (editClick)="editChip($event)" [style.padding-left]="item.indent*50 + 'px'"></xmlChip>
+      <xmlChip [obj]=item [dragToggle]=false  (editClick)="editChip($event)" (deleteClick)="deleteChipFromAdded($event)" [style.padding-left]="item.indent*50 + 'px'"></xmlChip>
     </div>
   </div>
 </div>

@@ -62,7 +62,7 @@
   width: 100%;
 }
 
-.toprightWrapper {
+.toprightWrapper {  
   display: flex;
   justify-content: space-between;
   margin-bottom: 3px;
@@ -110,6 +110,13 @@
   max-height: 999px;
 }
 
+.warnBorder{
+  border-right: 2px solid red;
+}
+
+.hide{
+  display: none;
+}
 /* * {
   margin: 0;
   padding: 0;

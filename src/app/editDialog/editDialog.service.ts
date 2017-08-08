@@ -6,7 +6,7 @@ export class EditDialogService
   emitter = new EventEmitter<any>();
   constructor(){
   }
-  update(){
-    this.emitter.emit();
+  update(item:any){
+    this.emitter.emit(item);
   }
 }

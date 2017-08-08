@@ -41,12 +41,6 @@ export class VariableEntity {
     }
   }
 
-  giveColor(){
-      if(!this.checkRequired()){
-        return "2px solid red";
-      }
-  }
-
   checkRequired(){
     var flag = true;
     for(let r of this.required){

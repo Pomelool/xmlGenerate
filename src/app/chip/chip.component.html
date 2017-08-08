@@ -1,5 +1,5 @@
-<div *ngIf="dragToggle;else template" class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': 'pulseToggle === 1'}" draggable
-  [dragData]="obj">
+<div *ngIf="dragToggle;else template" class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': expandVertValue === 0, 'hide':deletValue===1}" draggable
+  [dragData]="obj" >
   <div class="colortag" id="handlebar">
     <i class="material-icons .drag-handler">&#xE25D;</i>
   </div>
@@ -15,7 +15,7 @@
         <ng-template #expandedHoriChip>
           <div>
             <i class="fa fa-pencil fa-lg" aria-hidden="true" (click)="editAction()"></i>
-            <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+            <i class="fa fa-trash-o fa-lg" (click)="deleteAction()" aria-hidden="true"></i>
             <i class="fa fa-expand fa-lg" *ngIf="expandVertValue===0; else compress" (click)="changeExpandVerticalValue(1)" aria-hidden="true"></i>
             <ng-template #compress>
               <i class="fa fa-compress fa-lg" aria-hidden="true" (click)="changeExpandVerticalValue(0)"></i>
@@ -33,7 +33,7 @@
 </div>
 
 <ng-template #template>
-  <div class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': 'pulseToggle === 1'}">
+  <div class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': expandVertValue===0, 'warnBorder':!obj.checkRequired(), 'hide':deletValue===1}">
     <div class="colortag" id="handlebar">
       <i class="material-icons .drag-handler">&#xE25D;</i>
     </div>
@@ -49,7 +49,7 @@
           <ng-template #expandedHoriChip>
             <div>
               <i class="fa fa-pencil fa-lg" aria-hidden="true" (click)="editAction()"></i>
-              <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+              <i class="fa fa-trash-o fa-lg" aria-hidden="true" (click)="deleteAction()"></i>
               <i class="fa fa-expand fa-lg" *ngIf="expandVertValue===0; else compress" (click)="changeExpandVerticalValue(1)" aria-hidden="true"></i>
               <ng-template #compress>
                 <i class="fa fa-compress fa-lg" aria-hidden="true" (click)="changeExpandVerticalValue(0)"></i>
