@@ -88,6 +88,9 @@ export class EditDialogComponent implements OnInit {
   
   reloadEdit(){
     this.values = this.item.values;
+    this.controlNames = [];
+    this.controls = {};
+    this.labelsName = [];
     for(let label in this.values){
       this.controlNames.push(label);
       this.controls[label] = new FormControl(this.values[label]);
