@@ -21,7 +21,7 @@ import { ChipComponent } from "../chip/chip.component";
 @Component({
   selector: 'generator',
   templateUrl: './generator.component.html',
-  styleUrls: ['./generator.component.css', '../animated.css']
+  styleUrls: ['./generator.component.css', '../animated.css', './generator.component.scss']
 })
 export class GeneratorComponent {
   builder = require('xmlbuilder');

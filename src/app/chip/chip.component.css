@@ -3,6 +3,7 @@
   padding: 0;
 }
 
+
 /* Draggable*/
 
 .drag-border {
@@ -62,7 +63,7 @@
   width: 100%;
 }
 
-.toprightWrapper {  
+.toprightWrapper {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3px;
@@ -110,97 +111,31 @@
   max-height: 999px;
 }
 
-.warnBorder{
+.warnBorder {
   border-right: 2px solid red;
 }
 
-.hide{
+.hide {
   display: none;
 }
-/* * {
-  margin: 0;
-  padding: 0;
+
+.valuesTable {
+  border-collapse: collapse;
 }
 
-.chip {
-  background-color: #00ff7f;
-  min-height: 35px;
-  max-height: 35px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  border-radius: 5px;
-  display: inline-block;
-  overflow: hidden;
-  transition: max-height .8s ease;
-  will-change: max-height, height;
-  vertical-align: middle;
-  cursor: move;
-}
-
-.rightWrapper {
-  background-color: #dedede;
+.valuesTable tr {
+  margin: 2px 5px;
   float: left;
-  cursor: default;
 }
 
-.colortag {
-  border-radius: 5px;
-  background-color: #00ff7f;
-  text-align: center;
-  padding-top: 5px;
-  cursor: move;
-  float: left;
-  color: white;
+td {
+  text-align: middle;
+  padding: 0 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-.textzone {
-  color: black;
-  padding: 7px 0 0 0;
-  text-align: center;
-  float: left;
-  margin: 0 10px 0 10px;
+th{
+  text-align: middle;
+  padding: 0 5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
-
-.toprightWrapper{
-  border-bottom: 1px solid whitesmoke;
-  height: 35px;
-}
-
-.btnZone {
-  color: #757575;
-  text-align: center;
-  padding: 8px 0 0 0;
-  float: right;
-  width: 30px;
-  margin-right: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: width 0.5s ease;
-  will-change: width;
-  cursor: pointer;
-}
-
-.valuesZone {
-  text-align: center;
-  clear: both;
-  bottom: 0;
-  padding: 10px 10px 20px 10px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.expandedHoriChip {
-  width: 100px;
-}
-
-.expandedHoriChip i {
-  margin-right: 5px;
-  width: 15px;
-}
-
-.unexpandedHoriChip {
-  width: 30px;
-}
-
-.expandVertChip {
-  max-height: 500px;
-} */

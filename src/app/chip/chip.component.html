@@ -1,5 +1,5 @@
-<div *ngIf="dragToggle;else template" class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': expandVertValue === 0, 'hide':deletValue===1}" draggable
-  [dragData]="obj" >
+<div *ngIf="dragToggle;else template" class="chip" mdl-shadow="4" [ngClass]="{'animated pulse': expandVertValue === 0, 'hide':deletValue===1}"
+  draggable [dragData]="obj">
   <div class="colortag" id="handlebar">
     <i class="material-icons .drag-handler">&#xE25D;</i>
   </div>
@@ -27,7 +27,17 @@
     </div>
 
     <div *ngIf="expandVertValue === 1" class="valuesZone animated fadeIn">
-      {{values}}
+      <table class="valuesTable" *ngIf="valuesVariables.length > 0; else EmptyTemplate">
+        <tbody>
+          <tr *ngFor="let name of valuesVariables; index as i">
+            <th>{{name}}</th>
+            <td>{{valuesContents[i]}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #EmptyTemplate>
+        Empty
+      </ng-template>
     </div>
   </div>
 </div>
@@ -61,7 +71,17 @@
       </div>
 
       <div *ngIf="expandVertValue === 1" class="valuesZone animated fadeIn">
-        {{values}}
+        <table class="valuesTable" *ngIf="valuesVariables.length > 0; else EmptyTemplate">
+          <tbody>
+            <tr *ngFor="let name of valuesVariables; index as i">
+              <th>{{name}}</th>
+              <td>{{valuesContents[i]}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-template #EmptyTemplate>
+          Empty
+        </ng-template>
       </div>
     </div>
   </div>

@@ -22,9 +22,10 @@ export class ChipComponent implements OnInit {
   obj: VariableEntity;
   @Input()
   dragToggle:boolean;
-  values:string;
   edService: EditDialogService;
   deleteValue=0;
+  valuesVariables;
+  valuesContents;
 
   constructor(editService: EditDialogService) {
     this.edService = editService;
@@ -32,13 +33,27 @@ export class ChipComponent implements OnInit {
 
   ngOnInit() {
     this.chipText = this.obj.name;
-    this.values = JSON.stringify(this.obj.values);
+    this.processValues();
+  }
+
+  processValues(){
+    this.valuesVariables = [];
+    this.valuesContents = [];
+    for (var variable in this.obj.values) {
+      if (this.obj.values.hasOwnProperty(variable)) {
+        this.valuesVariables.push(variable);
+        if(this.obj.values[variable] == "" || this.obj.values[variable] == null){
+          this.obj.values[variable] = "N/A";
+        }
+        this.valuesContents.push(this.obj.values[variable]);
+      }
+    }
   }
 
   editAction(){
     this.edService.emitter.subscribe((data) => {
-      this.values = JSON.stringify(data.values);
       this.obj.values = data.values;
+      this.processValues();
     });
     this.editClick.emit(this.obj);
   }

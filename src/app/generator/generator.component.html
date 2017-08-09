@@ -39,7 +39,7 @@
   <h4>Drag variable here to configure XML</h4>
   <div class="dropZone" droppable (onDrop)="onItemDropListAdded($event)">
     <div *ngFor="let item of addedList; index as i;" class="chipwrapper" droppable (onDrop)="onItemDropOnObj($event, item)">
-      <xmlChip [obj]=item [dragToggle]=false  (editClick)="editChip($event)" (deleteClick)="deleteChipFromAdded($event)" [style.padding-left]="item.indent*50 + 'px'"></xmlChip>
+      <xmlChip [obj]=item [dragToggle]=false  (editClick)="editChip($event)" (deleteClick)="deleteChipFromAdded($event)" [style.margin-left]="item.indent*50 + 'px'"></xmlChip>
     </div>
   </div>
 </div>

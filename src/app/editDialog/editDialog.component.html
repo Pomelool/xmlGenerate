@@ -3,8 +3,8 @@
 </h4>
 <div class="editDialog-content mdl-dialog__content">
   <form [formGroup]="form" id="dialogForm">
-    <mdl-textfield type="text" class="editDialogTextEdit" *ngFor="let control of controlNames; index as i;" label="{{labelsName[i]}}"
-      formControlName="{{control}}" floating-label></mdl-textfield>
+      <mdl-textfield type="text" *ngFor="let control of controlNames; index as i;" class="editDialogTextEdit" label="{{labelsName[i]}}"
+        formControlName="{{control}}" floating-label></mdl-textfield>
   </form>
 </div>
 
@@ -17,10 +17,12 @@
         <mdl-option *ngFor="let b of choices" [value]="b.value">{{b.name}}</mdl-option>
       </mdl-select>
     </div>
-    
+
     <div class="float-right-bottom">
-      <button type="button" class="blackText" mdl-button (click)="saveNewValue()" [disabled]="!newVarForm.valid" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
-      <button type="button" class="blackText" mdl-button (click)="cancelNewValue()" mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Close</button>
+      <button type="button" class="blackText" mdl-button (click)="saveNewValue()" [disabled]="!newVarForm.valid" mdl-button-type="raised"
+        mdl-colored="primary" mdl-ripple>Save</button>
+      <button type="button" class="blackText" mdl-button (click)="cancelNewValue()" mdl-button-type="raised" mdl-colored="accent"
+        mdl-ripple>Close</button>
     </div>
   </div>
 </div>

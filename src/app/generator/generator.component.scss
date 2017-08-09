@@ -1,0 +1,21 @@
+@keyframes flashChip {
+  from,
+  50%,
+  to {
+    background-color: white;
+  }
+  25%,
+  75% {
+    background-color: yellowgreen;
+  }
+}
+
+.drag-over-border {
+  >xmlChip {
+    border-radius: 10px;
+    animation-iteration-count: infinite;
+    animation-name: flashChip;
+    animation-fill-mode: both;
+    animation-duration: 2s;
+  }
+}
